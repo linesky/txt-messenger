@@ -20,14 +20,17 @@ connection.on('error',onError);
 		vv=data.toString();
 		vv=connection.remoteAddress+" : " + vv;
 		console.log(vv);
-		connection.end("\n\rok\n\r");		
+		connection.end("\n\rok\n\r");
+		connection.destroy();
 	}
 	function onClose(){
 		var d = Date();
 		console.log(d);
+		connection.destroy();
 	}
 	function onError(data){
 		console.log(data);
+		connection.destroy();
 	}
 
 
